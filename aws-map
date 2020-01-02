@@ -1,0 +1,78 @@
+ALEXA SKILLS => AWS LAMBDA => DYNAMO DB
+
+ALEXA SKILLS (INTENT INVOKE SPECIFIC HANDLER)
+AWS LAMBDA (THE ACTUAL HANDLER IN NODEJS)
+DYNAMO DB (PERSISTENT DATA HELD RELATIVE TO LAMBDA'S CALL)
+
+THIRD PARTY API => THAT SERVES SOME DATA BACK TO AWS LAMBDA
+
+IF STORING API KEY => NEEDS TO BE ENCRYPTED [CHECK AWS IMPLICIT FEATURES]
+
+1:25
+
+IDEAS (20 minutes)
+
+BUS SCHEDULER [NEXTBUS XML/JSON API]
+When is the next bus coming?
+
+
+
+NEARBY YELP REVIEWED RESTAURANT FINDER [YELP API]
+
+RESULT: Should be name, location, distance, category?, price?.
+Definitely have a card
+
+TOOLS: Develop flow with draw.io
+
+Alexa, find me restaurants at [Address]
+Alexa, find me [typeOf] restaurants at [Address]
+Alexa, set default address as [Address]
+  - residential address
+
+  Alexa, nearby restaurants <= rely on default address
+
+  Alexa, closest restaurant <= rely on default address
+
+Alexa, configure search settings
+ - radius
+ - ?
+
+  PRECEDING ANY INTENTS
+  DYNAMO DB => CHECK IF THIS IS A NEW USER?
+    IF NEW PROMPT A SPECIFIC HANDLER
+      - HANDLES NEW NAME => RECOGNIZES USER
+      - [OPTIONAL] ADD AN ADDRESS TO CHECK NEARBY RESTAURANTS!
+        INVOKED WITH "ALEXA, CHECK NEARBY RESTAURANTS"
+
+  SHOULD BE A WAY TO "LOGOUT" AND "LOGIN"
+
+  WRITE ENDPOINT FIRE (USING CUSTOM YELP LIBRARY)
+
+
+TESTING (TDD)
+  TEST ANY MANIPULATION OF DATA
+
+EDGE CASES
+  USER GIVES NO RESPONSE
+  USER GIVES AN UNKNOWN RESPONSE
+  USERS VOICE IS TRANSCRIBED INCORRECTLY (IE THICK ACCENT)
+  WHAT IF THE API SERVER GIVES NO RESPONSE?
+
+
+User Invokes LaunchRequest
+- description of the skill?
+- hi there, to use the [skill] please first create a profile, with your name and address.
+- once done, you may say phrases such as "", "", "" 
+
+- would you like to create a profile now?
+  - what is your name?
+  - what is your address?
+
+
+User invokes Help
+"Check if user is signed in, if so"
+- say phrases such as "find restaurants nearby", "find restaurants at [address]", "find [typeof] restaurants at [address]"
+- examples?
+
+"if not"
+- redirect to profile create
